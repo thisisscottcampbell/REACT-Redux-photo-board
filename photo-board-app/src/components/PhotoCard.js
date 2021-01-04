@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PhotoCard = ({ post, idx }) => {
+const PhotoCard = ({ post, idx, removePhoto }) => {
 	return (
 		<div className="photoGrid">
 			<figure className="figure">
@@ -9,7 +9,9 @@ const PhotoCard = ({ post, idx }) => {
 					<p>{post.description}</p>
 				</figcaption>
 				<div className="button-container">
-					<button>Remove</button>
+					<button className="remove_button" onClick={() => removePhoto(post)}>
+						Remove
+					</button>
 				</div>
 			</figure>
 		</div>
