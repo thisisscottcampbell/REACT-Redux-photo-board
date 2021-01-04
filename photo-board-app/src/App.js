@@ -10,19 +10,13 @@ const App = ({ history }) => {
 	const [posts, setPosts] = useState([]);
 	const [newPost, setNewPost] = useState(false);
 
-	const removePhoto = ({ id, description, imageLink }) => {
-		const newList = posts.filter(
-			(post) =>
-				post.id !== id &&
-				post.description !== description &&
-				post.imageLink !== imageLink
-		);
+	const removePhoto = ({ id }) => {
+		const newList = posts.filter((post) => post.id !== id);
 
 		setPosts(newList);
 	};
 
 	const addPhoto = (post) => {
-		console.log(dummyPosts);
 		dummyPosts.push(post);
 		setNewPost(true);
 	};
@@ -30,6 +24,7 @@ const App = ({ history }) => {
 	//cdm ue
 	useEffect(() => setPosts(simulateFetch()), []);
 
+	//new post ue
 	useEffect(() => {
 		if (!newPost) return;
 
@@ -37,6 +32,7 @@ const App = ({ history }) => {
 		setNewPost(false);
 	}, [newPost]);
 
+	//list was updated ue
 	useEffect(() => history.push('/'), [posts]);
 
 	return (
