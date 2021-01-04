@@ -13,6 +13,7 @@ const AddPhoto = ({ addPhoto, history }) => {
 		e.preventDefault();
 
 		addPhoto({
+			timestamp: Number(new Date()),
 			id: Math.floor(Math.random() * 10000),
 			description: descriptionInput,
 			imageLink: linkInput,

@@ -28,7 +28,11 @@ const App = ({ history }) => {
 	useEffect(() => {
 		if (!newPost) return;
 
-		setPosts(simulateFetch());
+		const sortPostsByMostRecent = simulateFetch().sort(
+			(a, b) => b.timestamp - a.timestamp
+		);
+
+		setPosts(sortPostsByMostRecent);
 		setNewPost(false);
 	}, [newPost]);
 

@@ -1,5 +1,6 @@
 const dummyPosts = [
 	{
+		timestamp: 0,
 		id: '0',
 		description: 'beautiful landscape',
 		imageLink:
@@ -7,11 +8,13 @@ const dummyPosts = [
 			'3919321_1443393332_n.jpg',
 	},
 	{
+		timestamp: 1,
 		id: '1',
 		description: 'Aliens???',
 		imageLink: 'https://s3.india.com/wp-content/uploads/2017/12/rocket.jpg',
 	},
 	{
+		timestamp: 2,
 		id: '2',
 		description: 'On a vacation!',
 		imageLink:
