@@ -4,16 +4,15 @@ import PhotoCard from './PhotoCard';
 import PropTypes from 'prop-types';
 
 const PhotoList = ({ posts, ...props }) => {
-	console.log(props);
-	const PhotoCards = posts.map((post, i) => (
-		<PhotoCard post={post} key={i} {...props} />
+	const AllPhotoCards = posts.map((post, i) => (
+		<PhotoCard post={post} key={i} idx={i} {...props} />
 	));
 
 	return (
 		<div>
 			<Link className="addIcon" to="/AddPhoto"></Link>
 			<div className="photoGrid">
-				<div className="photoGrid">{PhotoCards}</div>
+				<div className="photoGrid">{AllPhotoCards}</div>
 			</div>
 		</div>
 	);

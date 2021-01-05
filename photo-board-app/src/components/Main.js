@@ -10,12 +10,6 @@ const Main = ({ history, posts, dispatch }) => {
 	const [currPosts, setPosts] = useState(posts);
 	const [newPost, setNewPost] = useState(false);
 
-	// const removePhoto = ({ id }) => {
-	// 	const newList = currPosts.filter((post) => post.id !== id);
-
-	// 	setPosts(newList);
-	// };
-
 	const addPhoto = (post) => {
 		//dummyPosts.push(post);
 		setNewPost(true);
@@ -24,7 +18,6 @@ const Main = ({ history, posts, dispatch }) => {
 	//cdm ue
 	useEffect(() => {
 		setPosts(simulateFetch());
-		// dispatch(removePost(1));
 	}, []);
 
 	//new post ue
@@ -50,7 +43,11 @@ const Main = ({ history, posts, dispatch }) => {
 				render={() => (
 					<div>
 						<Title title={'Photowall'} />
-						<PhotoList posts={currPosts} removePost={removePost} dispatch={dispatch} />
+						<PhotoList
+							posts={currPosts}
+							removePost={removePost}
+							dispatch={dispatch}
+						/>
 					</div>
 				)}
 			/>

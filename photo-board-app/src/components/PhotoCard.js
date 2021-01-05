@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PhotoCard = ({ post, dispatch, removePost }) => {
+const PhotoCard = ({ post, dispatch, removePost, idx }) => {
 	return (
 		<figure className="figure">
 			<img className="photo" src={post.imageLink} alt={post.description} />
@@ -10,7 +10,7 @@ const PhotoCard = ({ post, dispatch, removePost }) => {
 			<div className="button-container">
 				<button
 					className="remove_button"
-					onClick={() => dispatch(removePost(1))}
+					onClick={() => dispatch(removePost(idx))}
 				>
 					Remove
 				</button>
