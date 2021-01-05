@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 import PhotoCard from './PhotoCard';
 import PropTypes from 'prop-types';
 
-const PhotoList = ({ posts, removePhoto }) => {
+const PhotoList = ({ posts, ...props }) => {
+	console.log(props);
 	const PhotoCards = posts.map((post, i) => (
-		<PhotoCard post={post} removePhoto={removePhoto} key={i} />
+		<PhotoCard post={post} key={i} {...props} />
 	));
 
 	return (
@@ -20,7 +21,7 @@ const PhotoList = ({ posts, removePhoto }) => {
 
 PhotoList.propTypes = {
 	posts: PropTypes.array.isRequired,
-	removePhoto: PropTypes.func.isRequired,
+	//removePhoto: PropTypes.func.isRequired,
 };
 
 export default PhotoList;

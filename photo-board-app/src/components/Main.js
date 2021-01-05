@@ -4,25 +4,28 @@ import PhotoList from './PhotoList';
 import AddPhoto from './AddPhoto';
 import { BrowserRouter, Route, withRouter } from 'react-router-dom';
 import simulateFetch from '../util/simulateFetch';
-import dummyPosts from '../util/posts';
+import { removePost } from '../redux/actions';
 
-const Main = ({ history, posts }) => {
+const Main = ({ history, posts, dispatch }) => {
 	const [currPosts, setPosts] = useState(posts);
 	const [newPost, setNewPost] = useState(false);
 
-	const removePhoto = ({ id }) => {
-		const newList = currPosts.filter((post) => post.id !== id);
+	// const removePhoto = ({ id }) => {
+	// 	const newList = currPosts.filter((post) => post.id !== id);
 
-		setPosts(newList);
-	};
+	// 	setPosts(newList);
+	// };
 
 	const addPhoto = (post) => {
-		dummyPosts.push(post);
+		//dummyPosts.push(post);
 		setNewPost(true);
 	};
 
 	//cdm ue
-	useEffect(() => setPosts(simulateFetch()), []);
+	useEffect(() => {
+		setPosts(simulateFetch());
+		// dispatch(removePost(1));
+	}, []);
 
 	//new post ue
 	useEffect(() => {
@@ -47,7 +50,7 @@ const Main = ({ history, posts }) => {
 				render={() => (
 					<div>
 						<Title title={'Photowall'} />
-						<PhotoList removePhoto={removePhoto} posts={currPosts} />
+						<PhotoList posts={currPosts} removePost={removePost} dispatch={dispatch} />
 					</div>
 				)}
 			/>
