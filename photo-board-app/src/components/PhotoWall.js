@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import PhotoCard from './PhotoCard';
+import Photo from './Photo';
 import PropTypes from 'prop-types';
 
-const PhotoList = ({ posts, ...props }) => {
-	const AllPhotoCards = posts.map((post, i) => (
-		<PhotoCard post={post} key={i} idx={i} {...props} />
-	));
+const PhotoWall = ({ posts, ...props }) => {
+	const AllPhotoCards = posts
+		.sort((a, b) => a.id - b.id)
+		.map((post, i) => <Photo post={post} key={i} i={i} {...props} />);
 
 	return (
 		<div>
@@ -18,9 +18,9 @@ const PhotoList = ({ posts, ...props }) => {
 	);
 };
 
-PhotoList.propTypes = {
+PhotoWall.propTypes = {
 	posts: PropTypes.array.isRequired,
 	//removePhoto: PropTypes.func.isRequired,
 };
 
-export default PhotoList;
+export default PhotoWall;
