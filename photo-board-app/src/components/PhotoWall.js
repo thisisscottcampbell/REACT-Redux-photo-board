@@ -10,7 +10,7 @@ const PhotoWall = ({ posts, ...props }) => {
 
 	return (
 		<div>
-			<Link className="addIcon" to="/AddPhoto"></Link>
+			<Link className="addIcon" to="/AddPost"></Link>
 			<div className="photoGrid">
 				<div className="photoGrid">{AllPhotoCards}</div>
 			</div>

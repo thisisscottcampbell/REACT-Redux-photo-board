@@ -18,7 +18,7 @@ class Main extends Component {
 						render={(params) => <PhotoWall {...this.props} {...params} />}
 					/>
 					<Route
-						path="/create"
+						path="/AddPost"
 						render={(params) => <AddPost {...this.props} {...params} />}
 					/>
 				</Switch>

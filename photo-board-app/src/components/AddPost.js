@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import serializeForm from 'form-serialize';
 
 class AddPost extends Component {
+	//
 	handleSubmit = (e) => {
 		e.preventDefault();
 		const values = serializeForm(e.target, { hash: true });
@@ -11,6 +12,7 @@ class AddPost extends Component {
 			this.props.history.push('/');
 		}
 	};
+
 	render() {
 		return (
 			<div className="add-post">
