@@ -3,24 +3,16 @@ import { Link } from 'react-router-dom';
 import Photo from './Photo';
 import PropTypes from 'prop-types';
 
-const PhotoWall = ({ posts, removePicture, ...props }) => {
-	const AllPhotos = posts
-		.sort((a, b) => b.timestamp - a.timestamp)
-		.map((post, i) => (
-			<Photo
-				post={post}
-				i={i}
-				key={i}
-				removePicture={removePicture}
-				{...props}
-			/>
-		));
+const PhotoWall = ({ posts, ...props }) => {
+	const AllPhotoCards = posts
+		.sort((a, b) => a.id - b.id)
+		.map((post, i) => <Photo post={post} key={i} i={i} {...props} />);
 
 	return (
 		<div>
-			<Link className="addIcon" to="/AddPhoto"></Link>
+			<Link className="addIcon" to="/AddPost"></Link>
 			<div className="photoGrid">
-				<div className="photoGrid">{AllPhotos}</div>
+				<div className="photoGrid">{AllPhotoCards}</div>
 			</div>
 		</div>
 	);
@@ -28,7 +20,7 @@ const PhotoWall = ({ posts, removePicture, ...props }) => {
 
 PhotoWall.propTypes = {
 	posts: PropTypes.array.isRequired,
-	// 	removePhoto: PropTypes.func.isRequired,
+	//removePhoto: PropTypes.func.isRequired,
 };
 
 export default PhotoWall;
