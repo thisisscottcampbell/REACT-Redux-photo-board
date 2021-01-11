@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Photo = ({ post, i, removePicture, ...props }) => {
+const Photo = ({ post, i, removePicture, comments, ...props }) => {
 	const handleClick = () => {
 		removePicture(i);
 		props.history.push('/');
@@ -21,12 +21,12 @@ const Photo = ({ post, i, removePicture, ...props }) => {
 				<button className="remove_button" onClick={handleClick}>
 					Remove
 				</button>
-				{/* <Link className="button" to={`/single/${postId}`}>
+				<Link className="button" to={`/single/${postId}`}>
 					<div className="comment-count">
 						<div className="speech-bubble"> </div>
-						{props.comments[post.id] ? props.comments[post.id].length : 0}
+						{comments[postId] ? comments[postId].length : 0}
 					</div>
-				</Link> */}
+				</Link>
 			</div>
 		</figure>
 	);

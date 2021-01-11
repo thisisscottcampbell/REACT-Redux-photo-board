@@ -17,6 +17,7 @@ const PictureDetail = (props) => {
 				removePicture={removePicture}
 				history={history}
 				i={idx}
+				comments={comments}
 			/>
 			<Comments
 				addComment={addComment}
