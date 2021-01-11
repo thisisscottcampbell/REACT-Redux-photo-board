@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Photo = ({ post, i, removePicture, ...props }) => {
 	const handleClick = () => {
@@ -8,7 +9,9 @@ const Photo = ({ post, i, removePicture, ...props }) => {
 
 	return (
 		<figure className="figure">
-			<img className="photo" src={post.imageLink} alt={post.description} />
+			<Link to={`/detail/${post.id}`}>
+				<img className="photo" src={post.imageLink} alt={post.description} />
+			</Link>
 			<figcaption>
 				<p>{post.description}</p>
 			</figcaption>
