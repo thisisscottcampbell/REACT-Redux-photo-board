@@ -1,63 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import Title from './components/Title';
-import PhotoList from './components/PhotoList';
-import AddPhoto from './components/AddPhoto';
-import { BrowserRouter, Route, withRouter } from 'react-router-dom';
-import simulateFetch from './util/simulateFetch';
-import dummyPosts from './util/posts';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as actionCreators from './redux/action';
+import Main from './components/Main';
+import { withRouter } from 'react-router';
 
-const App = ({ history }) => {
-	const [posts, setPosts] = useState([]);
-	const [newPost, setNewPost] = useState(false);
-
-	const removePhoto = ({ id }) => {
-		const newList = posts.filter((post) => post.id !== id);
-
-		setPosts(newList);
+function mapStateToProps(state, ownProps) {
+	return {
+		posts: state,
 	};
+}
 
-	const addPhoto = (post) => {
-		dummyPosts.push(post);
-		setNewPost(true);
-	};
+function mapDispachToProps(dispatch) {
+	return bindActionCreators(actionCreators, dispatch);
+}
 
-	//cdm ue
-	useEffect(() => setPosts(simulateFetch()), []);
+const App = withRouter(connect(mapStateToProps, mapDispachToProps)(Main));
 
-	//new post ue
-	useEffect(() => {
-		if (!newPost) return;
-
-		const sortPostsByMostRecent = simulateFetch().sort(
-			(a, b) => b.timestamp - a.timestamp
-		);
-
-		setPosts(sortPostsByMostRecent);
-		setNewPost(false);
-	}, [newPost]);
-
-	//list was updated ue
-	useEffect(() => history.push('/'), [posts]);
-
-	return (
-		<BrowserRouter>
-			<Route
-				path="/"
-				exact
-				render={() => (
-					<div>
-						<Title title={'Photowall'} />
-						<PhotoList removePhoto={removePhoto} posts={posts} />
-					</div>
-				)}
-			/>
-			<Route
-				path="/AddPhoto"
-				exaxct
-				render={(props) => <AddPhoto addPhoto={addPhoto} {...props} />}
-			/>
-		</BrowserRouter>
-	);
-};
-
-export default withRouter(App);
+export default App;
