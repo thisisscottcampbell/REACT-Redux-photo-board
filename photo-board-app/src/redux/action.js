@@ -14,3 +14,10 @@ export function removePicture(i) {
 		payload: i,
 	};
 }
+
+export function addComment(comment) {
+	return {
+		type: 'ADD_COMMENT',
+		comment,
+	};
+}
