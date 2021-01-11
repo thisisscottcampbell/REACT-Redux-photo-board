@@ -1,9 +1,7 @@
 import React from 'react';
 import useInput from '../hooks/useInput';
 
-const Comments = (props) => {
-	const { addComment, pictureComments, id } = props;
-
+const Comments = ({ addComment, pictureComments, id }) => {
 	const [commentInput, setCommentInput, resetCommentInput] = useInput('');
 
 	const handleSubmit = (e) => {
