@@ -1,6 +1,11 @@
 import React from 'react';
 
-const PhotoCard = ({ post, dispatch, removePost, idx }) => {
+const Photo = ({ post, i, removePicture, ...props }) => {
+	const handleClick = () => {
+		props.history.push('/');
+		removePicture(i);
+	};
+
 	return (
 		<figure className="figure">
 			<img className="photo" src={post.imageLink} alt={post.description} />
@@ -8,10 +13,7 @@ const PhotoCard = ({ post, dispatch, removePost, idx }) => {
 				<p>{post.description}</p>
 			</figcaption>
 			<div className="button-container">
-				<button
-					className="remove_button"
-					onClick={() => dispatch(removePost(idx))}
-				>
+				<button className="remove_button" onClick={handleClick}>
 					Remove
 				</button>
 			</div>
@@ -19,6 +21,4 @@ const PhotoCard = ({ post, dispatch, removePost, idx }) => {
 	);
 };
 
-PhotoCard.propTypes = {};
-
-export default PhotoCard;
+export default Photo;

@@ -1,7 +1,7 @@
 import React from 'react';
 import useInput from '../hooks/useInput';
 
-const AddPhoto = ({ addPhoto, history }) => {
+const AddPhoto = ({ addPicture, history, ...props }) => {
 	const [linkInput, handleLinkInput, resetLinkInput] = useInput('');
 	const [
 		descriptionInput,
@@ -12,7 +12,7 @@ const AddPhoto = ({ addPhoto, history }) => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-		addPhoto({
+		addPicture({
 			timestamp: Number(new Date()),
 			id: Math.floor(Math.random() * 10000),
 			description: descriptionInput,
