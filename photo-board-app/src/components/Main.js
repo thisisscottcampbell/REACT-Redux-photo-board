@@ -23,7 +23,7 @@ class Main extends Component {
 						render={(params) => <AddPost {...this.props} {...params} />}
 					/>
 					<Route
-						path="/detail/:postId"
+						path="/detail/:paramsId"
 						render={(params) => <PictureDetail {...this.props} {...params} />}
 					/>
 				</Switch>

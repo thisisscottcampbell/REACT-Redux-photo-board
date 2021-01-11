@@ -2,16 +2,14 @@ import React from 'react';
 import useInput from '../hooks/useInput';
 
 const Comments = (props) => {
-	const { addComment, comments } = props;
-
-	console.log(addComment);
+	const { addComment, pictureComments, id } = props;
 
 	const [commentInput, setCommentInput, resetCommentInput] = useInput('');
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-		addComment(commentInput);
+		addComment(commentInput, id);
 
 		resetCommentInput();
 	};
@@ -28,7 +26,8 @@ const Comments = (props) => {
 				<input type="submit" hidden />
 			</form>
 			<h4>Comments:</h4>
-			{comments && comments.map((comment, i) => <p key={i}>{comment}</p>)}
+			{pictureComments &&
+				pictureComments.map((comment, i) => <p key={i}>{comment}</p>)}
 		</div>
 	);
 };
